@@ -7,6 +7,10 @@ dotenv.config();
 
 const app = express();
 
+// Convert payload before sending to server
+app.use(express.json()); // This enables JSON body parsing
+app.use(express.urlencoded({ extended: true }));
+
 app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT;
