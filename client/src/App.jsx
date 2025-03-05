@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { HomePage, Login, Profile, Settings, SignUp } from './pages';
 import { useAuthStore } from './store/useAuthStore';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -13,7 +14,7 @@ const App = () => {
 
   console.log('authUser:', authUser);
   // TODO: Add loading component
-  if (isCheckingAuth && !authUser) return <div>Loading...</div>;
+  // if (isCheckingAuth && !authUser) return <div>Loading...</div>;
 
   // Pages require authenticated user
   const getAuthenticatedPage = (Component) => {
@@ -31,16 +32,34 @@ const App = () => {
     return <Navigate to={'/'} />;
   };
 
+  const CommonLayout = ({ children }) => {
+    return (
+      <div>
+        <Navbar />
+        {children}
+      </div>
+    );
+  };
+
   return (
     <div>
-      <Navbar />
       <Routes>
-        <Route path="/" element={getAuthenticatedPage(HomePage)} />
+        <Route
+          path="/"
+          element={CommonLayout(getAuthenticatedPage(HomePage))}
+        />
         <Route path="/signup" element={getUnauthenticatedPage(SignUp)} />
         <Route path="/login" element={getUnauthenticatedPage(Login)} />
-        <Route path="/settings" element={getAuthenticatedPage(Settings)} />
-        <Route path="/profile" element={getAuthenticatedPage(Profile)} />
+        <Route
+          path="/settings"
+          element={CommonLayout(getAuthenticatedPage(Settings))}
+        />
+        <Route
+          path="/profile"
+          element={CommonLayout(getAuthenticatedPage(Profile))}
+        />
       </Routes>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
