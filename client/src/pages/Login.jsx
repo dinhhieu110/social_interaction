@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/useAuthStore';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const initForm = {
@@ -11,9 +12,20 @@ const Login = () => {
   const { login, isLoggingIn } = useAuthStore();
   const [form, setForm] = useState(initForm);
   const [showPassword, setShowPassword] = useState(false);
+  const validateForm = () => {
+    const { email, password } = form;
+    if (!email.trim()) return toast.error('Email is required!');
+    if (!/\S+@\S+\.\S+/.test(email)) return toast.error('Invalid email!');
+    if (!password.trim()) return toast.error('Password is required!');
+    if (password.trim().length < 6)
+      return toast.error('Password must be 6 characters at least!');
+
+    return true;
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    login(form);
+    const isFormValid = validateForm();
+    if (isFormValid) login(form);
   };
   const navigate = useNavigate();
 
