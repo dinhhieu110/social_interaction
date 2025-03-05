@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import Navbar from './components/Navbar';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { HomePage, Login, Profile, Settings, SignUp } from './pages';
-import { useAuthStore } from './store/useAuthStore';
-import { Toaster } from 'react-hot-toast';
+import React, { useEffect } from "react";
+import Navbar from "./components/Navbar";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { HomePage, Login, Profile, Settings, SignUp } from "./pages";
+import { useAuthStore } from "./store/useAuthStore";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
@@ -12,25 +12,8 @@ const App = () => {
     checkAuth();
   }, [checkAuth]);
 
-  console.log('authUser:', authUser);
   // TODO: Add loading component
-  // if (isCheckingAuth && !authUser) return <div>Loading...</div>;
-
-  // Pages require authenticated user
-  const getAuthenticatedPage = (Component) => {
-    if (authUser && Component) {
-      return <Component />;
-    }
-    return <Navigate to={'/login'} />;
-  };
-
-  // Pages require unauthenticated user
-  const getUnauthenticatedPage = (Component) => {
-    if (!authUser && Component) {
-      return <Component />;
-    }
-    return <Navigate to={'/'} />;
-  };
+  if (isCheckingAuth && !authUser) return <div>Loading...</div>;
 
   const CommonLayout = ({ children }) => {
     return (
@@ -46,17 +29,47 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={CommonLayout(getAuthenticatedPage(HomePage))}
+          element={
+            authUser ? (
+              <CommonLayout>
+                <HomePage />
+              </CommonLayout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
-        <Route path="/signup" element={getUnauthenticatedPage(SignUp)} />
-        <Route path="/login" element={getUnauthenticatedPage(Login)} />
         <Route
           path="/settings"
-          element={CommonLayout(getAuthenticatedPage(Settings))}
+          element={
+            authUser ? (
+              <CommonLayout>
+                <Settings />
+              </CommonLayout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route
           path="/profile"
-          element={CommonLayout(getAuthenticatedPage(Profile))}
+          element={
+            authUser ? (
+              <CommonLayout>
+                <Profile />
+              </CommonLayout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/signup"
+          element={!authUser ? <SignUp /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/login"
+          element={!authUser ? <Login /> : <Navigate to="/" />}
         />
       </Routes>
       <Toaster position="top-center" reverseOrder={false} />
