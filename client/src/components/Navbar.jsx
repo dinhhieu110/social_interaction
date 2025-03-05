@@ -10,7 +10,7 @@ import {
   Bell,
   LayoutGrid,
 } from "lucide-react";
-import Link from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
