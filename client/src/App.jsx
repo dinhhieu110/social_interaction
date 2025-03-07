@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { HomePage, Login, Profile, Settings, SignUp } from "./pages";
+import { HomePage, Login, Messenger, Profile, Settings, SignUp } from "./pages";
 import { useAuthStore } from "./store/useAuthStore";
 import { Toaster } from "react-hot-toast";
 
@@ -57,6 +57,18 @@ const App = () => {
             authUser ? (
               <CommonLayout>
                 <Profile />
+              </CommonLayout>
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
+        <Route
+          path="/messenger"
+          element={
+            authUser ? (
+              <CommonLayout>
+                <Messenger />
               </CommonLayout>
             ) : (
               <Navigate to="/login" />

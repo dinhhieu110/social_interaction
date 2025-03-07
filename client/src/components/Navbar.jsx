@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
   return (
-    <div className="h-20 border-b-amber-100 relative shadow-xl">
+    <div className="h-20 border-b-amber-100 sticky top-0 shadow-xl w-full">
       <div className="h-full flex justify-between px-4 py-8 border-b-1 border-b-neutral-400 ">
         <div className="flex items-center gap-2">
           <div className="rounded-full bg-blue-500 px-4 py-2 ">
@@ -55,7 +55,10 @@ const Navbar = () => {
           <Link className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer">
             <LayoutGrid size={30} />
           </Link>
-          <Link className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer">
+          <Link
+            to={"/messenger"}
+            className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer"
+          >
             <MessageCircle size={30} />
           </Link>
           <Link className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer">
