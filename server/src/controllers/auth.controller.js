@@ -92,11 +92,11 @@ export const updateProfile = async (req, res) => {
     if (!avatar) {
       return res.status(400).json({ message: "Avatar is required!" });
     }
-    const res = await cloudinary.uploader.upload(avatar);
+    const response = await cloudinary.uploader.upload(avatar);
     const updatedUser = await User.findByIdAndUpdate(
       userId,
       {
-        avatar: res.secure_url,
+        avatar: response.secure_url,
       },
       { new: true }
     );

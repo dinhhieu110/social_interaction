@@ -33,7 +33,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen bg-[#f2f4f7] flex justify-center">
-      <div className="">
+      <div>
         <h1 className="font-bold text-5xl text-[#0866ff] my-6 text-center">
           social interaction
         </h1>
