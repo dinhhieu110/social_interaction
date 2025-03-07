@@ -1,5 +1,5 @@
-import React from "react";
-import { useAuthStore } from "../store/useAuthStore";
+import React from 'react';
+import { useAuthStore } from '../store/useAuthStore';
 import {
   Search,
   House,
@@ -8,14 +8,15 @@ import {
   ChartGantt,
   MessageCircle,
   Bell,
-  LayoutGrid,
-} from "lucide-react";
-import { Link } from "react-router-dom";
+  UserPen,
+} from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
+  const navigate = useNavigate();
   return (
-    <div className="h-20 border-b-amber-100 relative shadow-xl">
+    <div className="h-20 w-full sticky top-0 border-b-amber-100 shadow-xl">
       <div className="h-full flex justify-between px-4 py-8 border-b-1 border-b-neutral-400 ">
         <div className="flex items-center gap-2">
           <div className="rounded-full bg-blue-500 px-4 py-2 ">
@@ -29,7 +30,7 @@ const Navbar = () => {
               type="email"
               className={`input input-bordered w-full pl-10 outline-0`}
               placeholder="Search Facebook"
-              value={""}
+              value={''}
               onChange={() => {}}
             />
           </div>
@@ -53,22 +54,24 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-2">
           <Link className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer">
-            <LayoutGrid size={30} />
-          </Link>
-          <Link className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer">
             <MessageCircle size={30} />
           </Link>
           <Link className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer">
             <Bell size={30} />
           </Link>
-          <div onClick={logout}>
-            <img
-              src="https://scontent.fsgn2-7.fna.fbcdn.net/v/t39.30808-1/480528379_4024046551212547_9084600564461308919_n.jpg?stp=cp6_dst-jpg_s80x80_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_ohc=bMIKWqlnXQUQ7kNvgEGtMiv&_nc_oc=AdhIEQKrfBfw1EYj1sHYbrARyQtidEOBUB8NVMZSOsMTMb4A0tyVompZHtI_vfoeItg&_nc_zt=24&_nc_ht=scontent.fsgn2-7.fna&_nc_gid=AQiOeUeh7PTVQAEVEgsL_dy&oh=00_AYCUqt_-BFrJ-e1zL1136-YY4wOt4pTxHvLuzN-tbD_amg&oe=67CE15A4"
-              className="p-3 rounded-full cursor-pointer"
-              width={70}
-              height={70}
-            />
-          </div>
+          <Link
+            className="p-3 rounded-full bg-neutral-200 hover:bg-neutral-100 cursor-pointer"
+            onClick={navigate('/profile')}
+          >
+            <UserPen size={30} />
+          </Link>
+          <img
+            src={authUser.avatar || '/avatar.png'}
+            className="rounded-full cursor-pointer"
+            width={50}
+            height={50}
+            onClick={logout}
+          />
         </div>
       </div>
       <div className="absolute left-0 "></div>

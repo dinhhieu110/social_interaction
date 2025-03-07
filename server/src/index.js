@@ -13,7 +13,7 @@ const app = express();
 
 // Convert payload before sending to server
 app.use(express.json()); // This enables JSON body parsing
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ limit: "50mg", extended: true }));
 
 // Allow to pass the cookies
 app.use(cookieParser());
