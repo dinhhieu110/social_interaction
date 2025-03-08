@@ -20,7 +20,12 @@ const Navbar = () => {
     <div className="h-20 border-b-amber-100 sticky top-0 shadow-xl w-full">
       <div className="h-full flex justify-between px-4 py-8 border-b-1 border-b-neutral-400 ">
         <div className="flex items-center gap-2">
-          <div className="rounded-full bg-blue-500 px-4 py-2 ">
+          <div
+            onClick={() => {
+              navigate("/");
+            }}
+            className="rounded-full bg-blue-500 px-4 py-2 cursor-pointer"
+          >
             <h1 className="text-2xl text-white font-extrabold">S</h1>
           </div>
           <div className="relative hidden md:flex h-10 bg-neutral-200 w-[200px] md:w-[256px] rounded-3xl">
@@ -37,7 +42,10 @@ const Navbar = () => {
           </div>
         </div>
         <div className="hidden xl:flex items-center gap-4">
-          <Link className="py-6 px-8 lg:px-14 rounded-md hover:bg-neutral-200 cursor-pointer border-b-2 border-b-blue-600">
+          <Link
+            to="/"
+            className="py-6 px-8 lg:px-14 rounded-md hover:bg-neutral-200 cursor-pointer border-b-2 border-b-blue-600"
+          >
             <House size={30} />
           </Link>
           <Link className="py-6 px-8 lg:px-14 rounded-md hover:bg-neutral-200 cursor-pointer">
