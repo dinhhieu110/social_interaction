@@ -70,7 +70,7 @@ const ChatInput = () => {
         <div className="flex-1 flex gap-2">
           <input
             type="text"
-            className="w-full p-2 input input-bordered bg-[#f0f2f5] rounded-2xl input-sm sm:input-md"
+            className="w-full p-2 input input-bordered focus:outline-0 bg-[#f0f2f5] rounded-2xl input-sm sm:input-md"
             placeholder="Type a message..."
             value={text}
             onChange={(e) => setText(e.target.value)}

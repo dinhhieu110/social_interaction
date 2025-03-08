@@ -28,13 +28,13 @@ const Navbar = () => {
           >
             <h1 className="text-2xl text-white font-extrabold">S</h1>
           </div>
-          <div className="relative hidden md:flex h-10 bg-neutral-200 w-[200px] md:w-[256px] rounded-3xl">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <div className="relative hidden md:flex h-10 w-[200px] md:w-[256px] ">
+            <div className="absolute z-2 top-2.5 left-0 pl-3 flex items-center pointer-events-none">
               <Search className="size-5 text-base-content/40" />
             </div>
             <input
               type="email"
-              className={`input input-bordered w-full pl-10 outline-0`}
+              className={`input input-bordered w-full pl-10 focus:outline-0 bg-[#f0f2f5] rounded-3xl`}
               placeholder="Search Facebook"
               value={""}
               onChange={() => {}}

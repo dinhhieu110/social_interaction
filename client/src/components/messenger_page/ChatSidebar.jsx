@@ -27,11 +27,11 @@ const ChatSidebar = () => {
         </div>
         <div className="relative hidden lg:flex h-14 w-full mt-4">
           <div className="absolute z-2 top-2 left-0 pl-3 flex items-center pointer-events-none">
-            <Search className="size-7 text-black" />
+            <Search className="size-6 text-black" />
           </div>
           <input
             type="email"
-            className={`input input-bordered w-full bg-[#f0f2f5]  pl-14 outline-0 rounded-2xl text-xl`}
+            className={`input input-bordered w-full bg-[#f0f2f5] pl-14 focus:outline-0 rounded-2xl text-xl`}
             placeholder="Search Facebook"
             value={""}
             onChange={() => {}}
