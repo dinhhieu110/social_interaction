@@ -1,0 +1,13 @@
+{
+  "name": "social_interaction",
+  "version": "1.0.0",
+  "description": "Desc: A fullstack real time interaction as messenger. Tech: Mongodb, Express, React JS, Node JS Note for packages: BE: npm i express mongoose dotenv jsonwebtoken bcryptjs cookie-parser cloudinary socket.io",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
+    "start":"npm run start --prefix server "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
