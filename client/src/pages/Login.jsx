@@ -37,7 +37,7 @@ const Login = () => {
           <h1 className="font-bold text-center lg:text-left text-5xl text-[#0866ff]">
             social interaction
           </h1>
-          <h2 className="text-2xl color-[#1c1e21] mt-3 text-center lg:text-left">
+          <h2 className="text-2xl text-[#1c1e21] mt-3 text-center lg:text-left">
             Social Interaction system helps you connect and share with the
             people in your life.
           </h2>
@@ -50,7 +50,7 @@ const Login = () => {
                 <input
                   type="text"
                   className={
-                    "input border-teal-200 border-1 p-4 rounded-md w-full outline-0 focus:border-[#0866ff]"
+                    "input bg-[#f0f2f5] text-black border-teal-200 border-1 p-4 rounded-md w-full outline-0 focus:border-[#0866ff]"
                   }
                   placeholder="Email address or phone number"
                   value={form.email}
@@ -62,7 +62,7 @@ const Login = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     className={
-                      "input border-teal-200 border-1 p-4 rounded-md w-full outline-0 focus:border-[#0866ff]"
+                      "input bg-[#f0f2f5] text-black border-teal-200 border-1 p-4 rounded-md w-full outline-0 focus:border-[#0866ff]"
                     }
                     placeholder="Password"
                     value={form.password}

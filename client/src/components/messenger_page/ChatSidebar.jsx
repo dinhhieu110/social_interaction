@@ -2,10 +2,12 @@ import React, { useEffect, useLayoutEffect } from "react";
 import { useChatStore } from "../../store/useChatStore";
 import SidebarSkeleton from "../skeleton/SidebarSkeleton";
 import { Edit, Search, LaptopMinimal } from "lucide-react";
+import { useAuthStore } from "../../store/useAuthStore";
 
 const ChatSidebar = () => {
   const { selectedUser, setSelectedUser, getUsers, users, enableShimmerUsers } =
     useChatStore();
+  const { onlineUsers } = useAuthStore();
 
   useLayoutEffect(() => {
     setSelectedUser(users[0]);
@@ -47,17 +49,24 @@ const ChatSidebar = () => {
               }`}
               onClick={() => setSelectedUser(user)}
             >
-              <img
-                className="rounded-full object-cover w-8 h-8 lg:w-18 lg:h-18"
-                src={user.avatar || "/avatar.png"}
-                alt="user avatar"
-              />
+              <div className="relative">
+                <img
+                  className="rounded-full object-cover w-8 h-8 lg:w-18 lg:h-18"
+                  src={user.avatar || "/avatar.png"}
+                  alt="user avatar"
+                />
+                {onlineUsers.includes(user._id) && (
+                  <span className="absolute size-1 bg-green-500 lg:size-3 bottom-2 right-1 rounded-full ring-zinc-900 ring-2"></span>
+                )}
+              </div>
               {/* Only display on large screen */}
               <div className="text-left hidden lg:block">
                 <div className="text-start text-xl truncate">
                   {user.fullName}
                 </div>
-                <div className="text-start text-lg">Online</div>
+                <div className="text-start text-lg">
+                  {onlineUsers.includes(user._id) ? "Online" : "Offline"}
+                </div>
               </div>
             </button>
           ))}

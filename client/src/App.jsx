@@ -6,11 +6,13 @@ import { useAuthStore } from "./store/useAuthStore";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  const { authUser, checkAuth, isCheckingAuth } = useAuthStore();
+  const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
 
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);
+
+  console.log("onlineUsers: ", onlineUsers);
 
   // TODO: Add loading component
   if (isCheckingAuth && !authUser) return <div>Loading...</div>;
