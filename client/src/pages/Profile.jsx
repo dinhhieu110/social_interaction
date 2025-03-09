@@ -59,7 +59,7 @@ const Profile = () => {
                 `}
                   >
                     <div className=" rounded-full absolute bottom-2 right-2 bg-white p-1">
-                      <Camera className="w-5 h-5 text-base-200" />
+                      <Camera className="w-5 h-5 text-black text-base-200" />
                     </div>
                     <input
                       type="file"
