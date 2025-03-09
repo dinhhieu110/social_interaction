@@ -41,7 +41,7 @@ const ChatSidebar = () => {
         </div>
         {/* Users */}
         <div className="h-[68vh] overflow-y-auto mt-4 scrollbar-hide hover:scrollbar-thin scrollbar-track-transparent hover:scrollbar-thumb-gray-500">
-          {users.map((user, index) => (
+          {users.reverse().map((user, index) => (
             <button
               key={index}
               className={`flex items-center gap-2 hover:bg-[#f0f2f5] w-full p-4 rounded-lg cursor-pointer ${

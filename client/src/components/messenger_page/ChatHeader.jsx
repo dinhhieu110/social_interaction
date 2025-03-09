@@ -11,7 +11,13 @@ const ChatHeader = () => {
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="relative">
-            <img width={40} height={40} src="/avatar.png" alt="avatar" />
+            <img
+              width={40}
+              height={40}
+              className="object-cover rounded-full"
+              src={selectedUser?.avatar || "/avatar.png"}
+              alt="avatar"
+            />
             {onlineUsers.includes(selectedUser?._id) && (
               <span className="absolute size-1 bg-green-500 lg:size-2 bottom-1 right-1 rounded-full ring-zinc-900 ring-2"></span>
             )}
